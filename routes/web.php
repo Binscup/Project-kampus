@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
-    Route::get("/", Login::class)->name("login");
+    Route::get("/", Login::class);
 });
-Route::get("/home", HomeComponent::class)->name("dashboard");
+Route::get("/home", HomeComponent::class)->name("dashboard")->middleware('auth');
 Route::get("/categories", CategoriesComponent::class)->name("categories");
 Route::get("/books", BooksComponent::class)->name("books");
 Route::get("/categories/create", CreateComponent::class)->name("categories.create");
