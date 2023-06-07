@@ -5,6 +5,7 @@ use App\Http\Livewire\Pages\HomeComponent;
 use App\Http\Livewire\Pages\BooksComponent;
 use App\Http\Livewire\Pages\Categories\CreateComponent;
 use App\Http\Livewire\Pages\Categories\UpdateComponent;
+use App\Http\Livewire\Pages\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", HomeComponent::class)->name("dashboard");
+Route::middleware(['guest'])->group(function () {
+    Route::get("/", Login::class)->name("login");
+});
+Route::get("/home", HomeComponent::class)->name("dashboard");
 Route::get("/categories", CategoriesComponent::class)->name("categories");
 Route::get("/books", BooksComponent::class)->name("books");
 Route::get("/categories/create", CreateComponent::class)->name("categories.create");
