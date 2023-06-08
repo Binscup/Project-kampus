@@ -1,4 +1,5 @@
-<div class="page page-center">
+<div>
+    <div class="page page-center">
       <div class="container container-normal py-4">
         <div class="row align-items-center g-4">
           <div class="col-lg">
@@ -72,3 +73,5 @@
         </div>
       </div>
     </div>
+
+</div>

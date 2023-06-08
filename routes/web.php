@@ -20,10 +20,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
-    Route::get("/", Login::class);
+    Route::get("/", login::class);
 });
-Route::get("/home", HomeComponent::class)->name("dashboard")->middleware('auth');
-Route::get("/categories", CategoriesComponent::class)->name("categories");
-Route::get("/books", BooksComponent::class)->name("books");
-Route::get("/categories/create", CreateComponent::class)->name("categories.create");
-Route::get("/categories/{categoriesId}/update", UpdateComponent::class)->name("categories.update");
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get("/home", HomeComponent::class)->name("dashboard")->middleware('auth');
+    Route::get("/categories", CategoriesComponent::class)->name("categories");
+    Route::get("/books", BooksComponent::class)->name("books");
+    Route::get("/categories/create", CreateComponent::class)->name("categories.create");
+    Route::get("/categories/{categoriesId}/update", UpdateComponent::class)->name("categories.update");
+});
+
